@@ -2,6 +2,7 @@ package xyz.wdudek.annotations;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -17,10 +18,7 @@ public class RandomFortuneService implements FortuneService {
 
     private Random random = new Random();
 
-    public RandomFortuneService() {
-        getFortunesFromTextFile();
-    }
-
+    @PostConstruct
     private void getFortunesFromTextFile() {
         try {
             File file = new File("src/fortunes.txt");
